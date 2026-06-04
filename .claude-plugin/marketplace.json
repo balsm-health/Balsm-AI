@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "balsm-ai",
+  "description": "Shared AI skills, slash commands, and subagents for all Balsm repos.",
+  "owner": {
+    "name": "balsm",
+    "email": "io@balsm.health"
+  },
+  "plugins": [
+    {
+      "name": "balsm-ai",
+      "description": "Balsm shared skills, commands, and agents — install once, available in every project.",
+      "source": "./plugin",
+      "category": "productivity"
+    }
+  ]
+}
