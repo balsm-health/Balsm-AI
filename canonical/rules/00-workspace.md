@@ -5,9 +5,8 @@ This repo is part of the Balsm multi-repo workspace. Repos and their roles:
 - **Balsm-API-DotNet** — backend API (.NET). Source of truth for endpoints, DTOs, auth.
 - **balsm_app_flutter** — mobile app (Flutter). Consumes the API.
 - **website** — marketing / web frontend. Consumes the API.
-- **docs** — documentation.
-- **Balsm-Roadmap**, **Balsm-Draft**, **specs** — planning & specs.
-- **assets** — shared assets.
+- **Balsm-Core** — planning, specs, architecture, product docs, and brand assets (merged from the former Balsm-Roadmap + docs + assets repos).
+- **Balsm-Draft**, **specs** — planning & specs.
 - **Balsm-AI** — shared AI toolkit (this content's source of truth).
 
 ## Cross-repo rule

@@ -9,9 +9,8 @@ You are working inside the Balsm multi-repo workspace at `/Volumes/Dev/Balsm`. T
 - **balsm_app_flutter** — mobile app (Flutter)
 - **website** — marketing / web frontend
 - **OpenWA** — WhatsApp integration
-- **docs** — documentation
-- **Balsm-Roadmap**, **Balsm-Draft**, **specs** — planning & specs
-- **assets** — shared assets
+- **Balsm-Core** — planning, specs, architecture, product docs, and brand assets (merged Balsm-Roadmap + docs + assets)
+- **Balsm-Draft**, **specs** — planning & specs
 - **Balsm-AI** — this shared AI toolkit (skills, commands, agents)
 
 Task:
