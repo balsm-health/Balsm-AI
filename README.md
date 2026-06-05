@@ -40,6 +40,28 @@ claude plugin install balsm-ai@balsm-ai --scope user
 
 Edit, commit, then `claude plugin update balsm-ai` (or restart) — changes flow to every project.
 
+## Cross-tool sharing (Cursor, Copilot, Windsurf, OpenCode, Antigravity, Gemini…)
+
+Claude skills/subagents are Claude-native — other tools don't load `SKILL.md`. So the **content** is shared via a generated `AGENTS.md` (the format most agents read natively), built from one source by `sync.mjs`.
+
+```
+canonical/rules/      # shared rules → AGENTS.md
+plugin/skills/        # Claude skills, also indexed on-demand into AGENTS.md
+plugin/commands/      # listed in AGENTS.md
+sync.mjs              # generator
+AGENTS.md             # generated universal baseline (do not hand-edit)
+```
+
+The skill index in `AGENTS.md` is **on-demand**: agents read a skill file only when the task matches — zero prompt bloat. Paths assume the Balsm repos sit side-by-side in one workspace folder.
+
+```bash
+node sync.mjs                # regenerate Balsm-AI/AGENTS.md
+node sync.mjs --distribute   # also write AGENTS.md into every sibling Balsm repo root
+node sync.mjs --check        # CI guard: fail if AGENTS.md is stale
+```
+
+Per-tool adapters (`.github/prompts`, `.cursor/commands`, `.windsurf/workflows`, `.opencode/command`) can be added to `sync.mjs` later — same canonical source.
+
 ## Token cost
 
 Every enabled skill/command/agent adds its description to context in all sessions. Keep `plugin/skills/` curated; bump `version` in `plugin/.claude-plugin/plugin.json` on releases.
