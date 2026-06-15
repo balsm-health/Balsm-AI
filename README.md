@@ -21,7 +21,7 @@ Balsm-AI/
 ## Install (once, user scope → all projects)
 
 ```bash
-claude plugin marketplace add /Volumes/Dev/Balsm/Balsm-AI
+claude plugin marketplace add .
 claude plugin install balsm-ai@balsm-ai --scope user
 ```
 
