@@ -193,6 +193,7 @@ function POSView({ dir }) {
   const [customer, setCustomer] = useState(null);
   const [cat, setCat] = useState(0);
   const [showCheckout, setShowCheckout] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   function add(p) {
     setBasket(prev => {
@@ -236,16 +237,29 @@ function POSView({ dir }) {
         <ProductGrid products={PRODUCTS} onAdd={add} dir={dir} />
       </div>
 
-      <div className="pos-right">
-        <BasketPanel
-          basket={basket}
-          customer={customer}
-          onQty={setQty}
-          onRemove={remove}
-          onCheckout={() => setShowCheckout(true)}
-          onPickCustomer={setCustomer}
-          dir={dir}
-        />
+      {basket.length > 0 && !sheetOpen && (
+        <div className="pos-cartbar" onClick={() => setSheetOpen(true)}>
+          <span className="cb-count">{basket.length}</span>
+          <span className="cb-label">{dir === 'rtl' ? 'السلة' : 'Cart'}</span>
+          <span className="cb-total">LE {total.toFixed(2)}</span>
+          <span className="cb-go"><Icon name="shopping-basket" size={16} />{dir === 'rtl' ? 'عرض' : 'View'}</span>
+        </div>
+      )}
+
+      {sheetOpen && <div className="pos-scrim" onClick={() => setSheetOpen(false)} />}
+      <div className={`pos-right ${sheetOpen ? 'open' : ''}`}>
+        <div className="pos-sheet-grabber" onClick={() => setSheetOpen(false)} />
+        <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
+          <BasketPanel
+            basket={basket}
+            customer={customer}
+            onQty={setQty}
+            onRemove={remove}
+            onCheckout={() => setShowCheckout(true)}
+            onPickCustomer={setCustomer}
+            dir={dir}
+          />
+        </div>
       </div>
 
       {showCheckout && (
@@ -253,7 +267,7 @@ function POSView({ dir }) {
           basket={basket}
           total={total}
           dir={dir}
-          onClose={() => { setShowCheckout(false); setBasket([]); setCustomer(null); }}
+          onClose={() => { setShowCheckout(false); setSheetOpen(false); setBasket([]); setCustomer(null); }}
         />
       )}
     </div>

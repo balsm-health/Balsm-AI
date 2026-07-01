@@ -44,7 +44,11 @@ body {
   padding: 32px 24px;
 }
 
-/* The screen surface that lives inside the iOS bezel */
+/* ── Adaptive screen surface ──────────────────────────────────
+   Mobile (<600px): full-viewport, no frame chrome.
+   Tablet / desktop (600px+): centered phone-in-frame. */
+
+/* Inside the iOS bezel on tablet+ */
 .screen {
   position: absolute; inset: 0;
   display: flex; flex-direction: column;
@@ -53,6 +57,27 @@ body {
   font-size: var(--pt-base);
 }
 .screen.cream { background: var(--balsm-cream-50); }
+
+/* Full-viewport mode on real mobile (no iOS frame shell) */
+@media (max-width: 599px) {
+  body { background: var(--balsm-cream-50); }
+  .stage { padding: 0; align-items: stretch; }
+  /* The IOSDevice wrapper becomes a plain pass-through */
+  .ios-device-shell {
+    width: 100% !important; height: 100% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .ios-device-shell .ios-bezel,
+  .ios-device-shell .ios-sidebar,
+  .ios-device-shell .ios-button-row {
+    display: none !important;
+  }
+  .ios-device-shell .ios-screen-inner {
+    border-radius: 0 !important;
+    inset: 0 !important;
+  }
+}
 
 /* scroll body that clears status bar + home indicator */
 .screen-scroll {

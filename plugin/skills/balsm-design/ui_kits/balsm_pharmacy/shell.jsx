@@ -65,7 +65,7 @@ function Sidebar({ screen, onScreen, dir }) {
   );
 }
 
-function TopBar({ screen, dir, online, onLang, onToggleOnline }) {
+function TopBar({ screen, dir, online, showBadges = true, onLang, onToggleOnline }) {
   const titles = {
     pos:       dir === 'rtl' ? 'نقطة البيع' : 'Point of sale',
     inventory: dir === 'rtl' ? 'المخزون'     : 'Inventory',
@@ -90,7 +90,7 @@ function TopBar({ screen, dir, online, onLang, onToggleOnline }) {
         <input placeholder={dir === 'rtl' ? 'ابحث في الدواء، العميل، الفاتورة…' : 'Search medication, customer, invoice…'} />
         <span className="kbd">⌘ K</span>
       </div>
-      <span className={`online-pill ${online ? '' : 'offline'}`} onClick={onToggleOnline} style={{ cursor: 'pointer' }} title="Click to toggle">
+      <span className={`online-pill ${online ? '' : 'offline'}`} onClick={onToggleOnline} style={{ cursor: 'pointer', display: showBadges ? '' : 'none' }} title="Click to toggle">
         <span className="dot" />
         {online ? (dir === 'rtl' ? 'متصل بالخادم' : 'Local server connected') : (dir === 'rtl' ? 'غير متصل · 3 في الطابور' : 'Offline · 3 queued')}
       </span>
@@ -116,4 +116,28 @@ function OfflineBanner({ dir }) {
   );
 }
 
-Object.assign(window, { Flower, Brand, Sidebar, TopBar, OfflineBanner });
+/* Compact-only bottom navigation — primary destinations for the whole suite. */
+function BottomNav({ screen, onScreen, dir }) {
+  const items = [
+    { id: 'pos',       icon: 'scan-barcode', label: dir === 'rtl' ? 'البيع'    : 'POS' },
+    { id: 'inventory', icon: 'package',      label: dir === 'rtl' ? 'المخزون'  : 'Stock', badge: '12' },
+    { id: 'customers', icon: 'users-round',  label: dir === 'rtl' ? 'العملاء'  : 'People' },
+    { id: 'sync',      icon: 'cloud-upload', label: dir === 'rtl' ? 'المزامنة' : 'Sync', badge: '3' },
+    { id: 'settings',  icon: 'settings-2',   label: dir === 'rtl' ? 'المزيد'   : 'More' },
+  ];
+  return (
+    <nav className="bottom-nav">
+      {items.map(item => (
+        <button key={item.id}
+                className={`bn-item ${screen === item.id ? 'active' : ''}`}
+                onClick={() => onScreen(item.id)}>
+          {item.badge && <span className="bn-badge">{item.badge}</span>}
+          <Icon name={item.icon} size={22} />
+          <span>{item.label}</span>
+        </button>
+      ))}
+    </nav>
+  );
+}
+
+Object.assign(window, { Flower, Brand, Sidebar, TopBar, OfflineBanner, BottomNav });

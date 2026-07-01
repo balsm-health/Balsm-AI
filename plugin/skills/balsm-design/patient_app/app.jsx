@@ -17,12 +17,19 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 function useFit(w, h, pad = 40) {
   const [scale, setScale] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    const fit = () => setScale(Math.min(1, (window.innerWidth - pad) / w, (window.innerHeight - pad) / h));
-    fit(); window.addEventListener('resize', fit);
+    const fit = () => {
+      const mobile = window.innerWidth < 600;
+      setIsMobile(mobile);
+      if (mobile) { setScale(1); return; }
+      setScale(Math.min(1, (window.innerWidth - pad) / w, (window.innerHeight - pad) / h));
+    };
+    fit();
+    window.addEventListener('resize', fit);
     return () => window.removeEventListener('resize', fit);
   }, [w, h, pad]);
-  return scale;
+  return { scale, isMobile };
 }
 
 function TabBar() {
@@ -85,7 +92,7 @@ function App() {
     finishFlow: (toTab) => { setFlowOpen(false); setTab(toTab); },
   };
 
-  const scale = useFit(402, 874, 40);
+  const { scale, isMobile } = useFit(402, 874, 40);
 
   const AuthScreen = { welcome: WelcomeScreen, phone: PhoneScreen, otp: OtpScreen, profile: ProfileSetupScreen }[route];
 
@@ -95,10 +102,19 @@ function App() {
     '--ui-scale': tw.fontScale,
   };
 
+  // On real mobile the stage fills the viewport; on tablet/desktop the iOS frame floats
+  const frameStyle = isMobile
+    ? { width: '100%', height: '100%' }
+    : { transform: `scale(${scale})`, transformOrigin: 'center center' };
+
+  const stageStyle = isMobile
+    ? { padding: 0, alignItems: 'stretch', minHeight: '100dvh', minHeight: '100vh' }
+    : {};
+
   return (
     <AppCtx.Provider value={ctx}>
-      <div className="stage" style={accentVars}>
-        <div style={{ transform: `scale(${scale})`, transformOrigin: 'center center' }}>
+      <div className="stage" style={{ ...accentVars, ...stageStyle }}>
+        <div style={frameStyle}>
           <IOSDevice>
             <div dir={dir} style={{ height: '100%', position: 'absolute', inset: 0 }}>
               {route === 'app' ? <MainApp /> : <AuthScreen />}

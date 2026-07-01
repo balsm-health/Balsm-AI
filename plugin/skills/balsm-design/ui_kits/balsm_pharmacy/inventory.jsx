@@ -82,6 +82,29 @@ function InventoryTable({ rows, dir }) {
   );
 }
 
+function InventoryCards({ rows, dir }) {
+  return (
+    <div className="inv-cards">
+      {rows.map((r, i) => (
+        <div className="inv-card" key={i}>
+          <div className="ic-top">
+            <div>
+              <div className="name">{r.name}</div>
+              <div className="meta">{r.meta}</div>
+            </div>
+            <Pill tone={r.tone} icon={r.tone==='controlled'?'shield-alert':null} dot={r.tone!=='controlled'}>{r.label}</Pill>
+          </div>
+          <div className="ic-foot">
+            <span>{dir==='rtl' ? 'الكود' : 'SKU'}<b>{r.sku}</b></span>
+            <span>{dir==='rtl' ? 'المخزون' : 'Stock'}<b>{r.stock}</b></span>
+            <span>{dir==='rtl' ? 'الصلاحية' : 'Expiry'}<b>{r.expiry}</b></span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function InventoryView({ dir }) {
   return (
     <div className="page">
@@ -104,9 +127,12 @@ function InventoryView({ dir }) {
         <Stat lab={dir==='rtl' ? 'منتهية قريباً (٩٠ يوم)' : 'Expiring (90 d)'} val="1" delta={dir==='rtl' ? 'Omeprazole · 07/2026' : 'Omeprazole · 07/2026'} deltaTone="neg" accent="danger" />
       </div>
 
-      <InventoryTable rows={INVENTORY} dir={dir} />
+      <div className="inv-table-wrap">
+        <InventoryTable rows={INVENTORY} dir={dir} />
+      </div>
+      <InventoryCards rows={INVENTORY} dir={dir} />
     </div>
   );
 }
 
-Object.assign(window, { Stat, InventoryTable, InventoryView });
+Object.assign(window, { Stat, InventoryTable, InventoryCards, InventoryView });

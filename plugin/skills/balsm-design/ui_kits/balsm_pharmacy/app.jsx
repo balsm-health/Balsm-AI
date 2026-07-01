@@ -1,4 +1,27 @@
-/* app.jsx — top-level Balsm Pharmacy App */
+/* app.jsx — top-level Balsm Pharmacy App
+   Tweaks here are Balsm-Pro *suite* settings — language, connection, brand
+   accent, sync chrome and landing module — shared across every module
+   (POS · Inventory · Customers …), not POS-only. Mirrors the props the
+   Balsm Pharmacy POS design component exposes. */
+
+// Persisted shared-suite settings. Edited live via the Tweaks panel.
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "language": "en",
+  "connection": "online",
+  "accent": "#1283FF",
+  "syncBadges": true,
+  "landingModule": "pos"
+}/*EDITMODE-END*/;
+
+// Brand accent → the petal it maps to (primary / hover / soft wash surface).
+// Switching this re-skins active nav, primary CTAs and selected states across
+// every module at once, because they all read --balsm-primary / its wash.
+const BALSM_ACCENTS = {
+  '#1283FF': { primary: '#1283FF', hover: '#0F6BCC', wash: '#E4F0FF', name: 'Petal blue' },
+  '#02BBB5': { primary: '#02BBB5', hover: '#029E99', wash: '#E2F8F6', name: 'Petal aqua' },
+  '#01C4A2': { primary: '#01C4A2', hover: '#019A7F', wash: '#E1F8F1', name: 'Petal emerald' },
+  '#724DD0': { primary: '#724DD0', hover: '#5C3AB0', wash: '#ECE6FA', name: 'Petal violet' },
+};
 
 function PlaceholderView({ icon, title, sub }) {
   return (
@@ -15,18 +38,37 @@ function PlaceholderView({ icon, title, sub }) {
 }
 
 function App() {
-  const [screen, setScreen] = useState('pos');
-  const [dir, setDir] = useState('ltr');
-  const [online, setOnline] = useState(true);
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  // Derive shared state from tweaks (single source of truth).
+  const dir = t.language === 'ar' ? 'rtl' : 'ltr';
+  const online = t.connection !== 'offline';
+  const showBadges = t.syncBadges !== false;
+  const accent = BALSM_ACCENTS[t.accent] || BALSM_ACCENTS['#1283FF'];
+
+  const [screen, setScreen] = useState(t.landingModule || 'pos');
 
   useEffect(() => {
     document.documentElement.setAttribute('dir', dir);
   }, [dir]);
 
+  // Landing-module tweak routes the whole app to its starting screen.
+  useEffect(() => {
+    if (t.landingModule) setScreen(t.landingModule);
+  }, [t.landingModule]);
+
   // Re-init lucide on every screen / dir change
   useEffect(() => {
     if (window.lucide) window.lucide.createIcons();
   });
+
+  // Suite-wide accent re-skin — custom props cascade into every child module.
+  const accentVars = {
+    '--balsm-primary': accent.primary,
+    '--balsm-primary-hover': accent.hover,
+    '--petal-blue': accent.primary,
+    '--petal-blue-50': accent.wash,
+  };
 
   function renderScreen() {
     switch (screen) {
@@ -44,19 +86,60 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="app" style={accentVars}>
       <Sidebar screen={screen} onScreen={setScreen} dir={dir} />
       <TopBar
         screen={screen}
         dir={dir}
         online={online}
-        onLang={setDir}
-        onToggleOnline={() => setOnline(o => !o)}
+        showBadges={showBadges}
+        onLang={(d) => setTweak('language', d === 'rtl' ? 'ar' : 'en')}
+        onToggleOnline={() => setTweak('connection', online ? 'offline' : 'online')}
       />
       <main className="main">
-        {!online && <OfflineBanner dir={dir} />}
+        {!online && showBadges && <OfflineBanner dir={dir} />}
         {renderScreen()}
       </main>
+
+      <BottomNav screen={screen} onScreen={setScreen} dir={dir} />
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Balsm-Pro · shared" />
+        <TweakRadio
+          label="Language"
+          value={t.language}
+          options={[{ value: 'en', label: 'EN' }, { value: 'ar', label: 'العربية' }]}
+          onChange={(v) => setTweak('language', v)}
+        />
+        <TweakRadio
+          label="Connection"
+          value={t.connection}
+          options={[{ value: 'online', label: 'Online' }, { value: 'offline', label: 'Offline' }]}
+          onChange={(v) => setTweak('connection', v)}
+        />
+        <TweakColor
+          label="Brand accent"
+          value={t.accent}
+          options={['#1283FF', '#02BBB5', '#01C4A2', '#724DD0']}
+          onChange={(v) => setTweak('accent', v)}
+        />
+        <TweakToggle
+          label="Sync badges"
+          value={showBadges}
+          onChange={(v) => setTweak('syncBadges', v)}
+        />
+        <TweakSection label="Workspace" />
+        <TweakSelect
+          label="Landing module"
+          value={t.landingModule}
+          options={[
+            { value: 'pos', label: 'Point of sale' },
+            { value: 'inventory', label: 'Inventory' },
+            { value: 'customers', label: 'Customers' },
+          ]}
+          onChange={(v) => setTweak('landingModule', v)}
+        />
+      </TweaksPanel>
     </div>
   );
 }

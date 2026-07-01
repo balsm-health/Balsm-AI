@@ -54,7 +54,7 @@ function HomeScreen() {
       {/* Hero check-in */}
       {!checkedIn ? (
         <div className="hero-card">
-  
+
           <div className="label">{t('today_lbl')}</div>
           <div className="h" style={{ textWrap: 'balance' }}>{t('hero_q')}</div>
           <div className="cta" onClick={openFlow} style={{ whiteSpace: 'nowrap' }}>
