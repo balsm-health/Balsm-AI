@@ -2,26 +2,15 @@
   "mcpServers": {
     "github": {
       "type": "http",
-      "url": "https://api.githubcopilot.com/mcp/",
-      "headers": {
-        "Authorization": "Bearer ${GITHUB_PAT}"
-      }
+      "url": "https://api.githubcopilot.com/mcp/"
     },
     "sentry": {
       "type": "http",
       "url": "https://mcp.sentry.dev/mcp"
     },
     "supabase": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@supabase/mcp-server-supabase@latest",
-        "--read-only",
-        "--project-ref=${SUPABASE_PROJECT_REF}"
-      ],
-      "env": {
-        "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}"
-      }
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp?read_only=true"
     }
   }
 }
