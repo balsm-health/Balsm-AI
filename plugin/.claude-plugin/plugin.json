@@ -1,7 +1,7 @@
 {
   "name": "balsm-ai",
-  "description": "Balsm shared AI toolkit: skills, slash commands, and subagents used across every Balsm repo (API, Flutter app, website, OpenWA, docs).",
-  "version": "0.2.1",
+  "description": "Balsm shared AI toolkit: skills, slash commands, subagents, and bundled MCP servers (GitHub, Sentry, Supabase) used across every Balsm repo (API, Flutter app, website, OpenWA, docs).",
+  "version": "0.3.0",
   "author": {
     "name": "Balsm.health",
     "email": "io@balsm.health"
