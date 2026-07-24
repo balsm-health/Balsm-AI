@@ -361,8 +361,8 @@ Breakpoints live as `--bp-*` tokens in `colors_and_type.css`. Because CSS can't 
 | Source | Why it's here |
 |---|---|
 | `uploads/baslm-brand-canvas.md` | **Canonical brand reference** — locked. Mission, voice, values, positioning. |
-| `balsm-io/assets/brand/` | Official brand pack — logo, watercolor background |
-| `balsm-io/Balsm-Draft` | Product roadmap, business features, controlled-substance + RTL requirements |
+| `balsm-health/assets/brand/` | Official brand pack — logo, watercolor background |
+| `balsm-health/Balsm-Draft` | Product roadmap, business features, controlled-substance + RTL requirements |
 | AppFlowy-IO/AppFlowy | Offline-sync + workspace patterns reference |
 
 > For deeper work: the Balsm-Draft repo has 60k+ words of market research and a 300k-word business-feature spec.
