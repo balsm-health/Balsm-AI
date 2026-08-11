@@ -6,7 +6,7 @@ argument-hint: "[optional: focus area]"
 You are working inside the Balsm multi-repo workspace at `/Volumes/Dev/Balsm`. The repos and their roles:
 
 - **Balsm-API-DotNet** — backend API (.NET)
-- **balsm_app_flutter** — mobile app (Flutter)
+- **balsm_app** — mobile app (Flutter)
 - **website** — marketing / web frontend
 - **OpenWA** — WhatsApp integration
 - **Balsm-Core** — planning, specs, architecture, product docs, and brand assets (merged Balsm-Roadmap + docs + assets)

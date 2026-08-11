@@ -1,12 +1,12 @@
 ---
 name: balsm-design
-description: Use this skill to generate well-branded interfaces and assets for Balsm.health (بَلسَم) — the community-owned healthcare OS for the Arab world. Includes the official five-petal flower mark, the five-color petal palette, warm olive-gray neutrals, type system (Montserrat / IBM Plex Sans / IBM Plex Sans Arabic / Cairo / IBM Plex Mono), Lucide iconography, a Pharmacy POS UI kit (Slice 1), and a Patient App prototype (Slice 2). Brand promise: "Your care. Your data. Your system." Three words: Open. Arab. Owned.
+description: Use this skill to generate well-branded interfaces and assets for Balsm.health (بلسم) — the community-owned healthcare OS for the Arab world. Includes the official five-petal flower mark, the five-color petal palette, warm olive-gray neutrals, type system (Montserrat / IBM Plex Sans / IBM Plex Sans Arabic / Cairo / IBM Plex Mono), Lucide iconography, a Pharmacy POS UI kit (Slice 1), and a Patient App prototype (Slice 2). Brand promise: "Your care. Your data. Your system." Three words: Open. Arab. Owned.
 user-invocable: true
 ---
 
 ## How to use this skill
 
-Read `README.md` first — it is the canonical map of the design system, brand canvas, voice, values, and UI kits. For brand decisions, also read `uploads/baslm-brand-canvas.md` (locked, v1.0).
+Read `README.md` first — it is the canonical map of the design system, brand canvas, voice, values, and UI kits. For brand decisions, also read `uploads/balsm-brand-canvas.md` (locked, v1.0).
 
 Minimum starter for any new artifact:
 ```html
@@ -22,7 +22,7 @@ For production code, copy `colors_and_type.css` into the codebase — it is the 
 | File | What it is |
 |---|---|
 | `README.md` | Design system manual + brand canvas summary. Read first. |
-| `uploads/baslm-brand-canvas.md` | **Canonical brand reference (locked).** Mission, vision, promise, personality, voice, values, positioning, experience standard. |
+| `uploads/balsm-brand-canvas.md` | **Canonical brand reference (locked).** Mission, vision, promise, personality, voice, values, positioning, experience standard. |
 | `colors_and_type.css` | Every CSS token — petals, neutrals, type, spacing, radii, shadows, motion. |
 | `brand/logo-vertical.svg` | Five-petal flower + bilingual wordmark. Use as-is; do not redraw. |
 | `brand/balsm-background.png` | Signature watercolor petal pattern — hero/welcome backdrops only. |
@@ -35,7 +35,7 @@ For production code, copy `colors_and_type.css` into the codebase — it is the 
 
 1. **Brand promise** — every patient-facing surface must embody: "Your care. Your data. Your system." Patient data sovereignty is non-negotiable. Never imply data goes anywhere the user didn't choose.
 
-2. **Brand name** — `Balsm.health` in product surfaces (`.health` one weight lighter). Arabic: `بَلسَم` with both diacritics (fatha on ب and on س). Without diacritics is incorrect.
+2. **Brand name** — `Balsm.health` in product surfaces (`.health` one weight lighter). Arabic: `بلسم` with both diacritics (fatha on ب and on س). Without diacritics is incorrect.
 
 3. **The flower mark has FIVE colors** — aqua, emerald, blue, mint, violet. Never recolor to a single hue.
 
