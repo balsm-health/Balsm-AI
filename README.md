@@ -13,7 +13,7 @@ Balsm-AI/
 └── plugin/                     # the plugin itself
     ├── .claude-plugin/
     │   └── plugin.json         # plugin manifest (name, version)
-    ├── skills/                 # 49 security skills + your own
+    ├── skills/                 # security + design/frontend skills + your own
     ├── commands/               # slash commands (e.g. /balsm-context)
     └── agents/                 # subagents (e.g. balsm-reviewer)
 ```

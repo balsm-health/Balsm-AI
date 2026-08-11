@@ -22,7 +22,7 @@ When you change an API endpoint, DTO, or auth contract in **Balsm-API-DotNet**, 
 
 Balsm handles health data. Treat auth, input validation, secrets, and PII handling as first-class. When working on auth, APIs, mobile storage, cloud, or CI/CD, consult the on-demand security skill index below and read the relevant skill file before implementing.
 
-## Security skills — on-demand index
+## Skills — on-demand index
 
 These are deep how-to playbooks. Do NOT load them all. When a task matches one, open the file at its path and follow it. Paths assume the Balsm repos sit side by side under one workspace folder.
 
@@ -35,12 +35,19 @@ These are deep how-to playbooks. Do NOT load them all. When a task matches one, 
 | analyzing-kubernetes-audit-logs | 'Parses Kubernetes API server audit logs (JSON lines) to detect exec-into-pod, secret access, RBAC modifications, privileged pod creation… | `plugin/skills/analyzing-kubernetes-audit-logs/SKILL.md` |
 | analyzing-linux-system-artifacts | Examine Linux system artifacts including auth logs, cron jobs, shell history, and system configuration to uncover evidence of compromise … | `plugin/skills/analyzing-linux-system-artifacts/SKILL.md` |
 | analyzing-memory-dumps-with-volatility | 'Analyzes RAM memory dumps from compromised systems using the Volatility framework to identify malicious processes, injected code, networ… | `plugin/skills/analyzing-memory-dumps-with-volatility/SKILL.md` |
+| balsm-ai-governance | "Balsm's mandatory AI governance rules for ANY AI/LLM/ML feature in the healthcare platform. Load BEFORE designing, planning, or implemen… | `plugin/skills/balsm-ai-governance/SKILL.md` |
+| balsm-design | Use this skill to generate well-branded interfaces and assets for Balsm.health (بلسم) — the community-owned healthcare OS for the Arab wo… | `plugin/skills/balsm-design/SKILL.md` |
+| brandkit | Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world pr… | `plugin/skills/brandkit/SKILL.md` |
 | conducting-cloud-incident-response | 'Responds to security incidents in cloud environments (AWS, Azure, GCP) by performing identity-based containment, cloud-native log analys… | `plugin/skills/conducting-cloud-incident-response/SKILL.md` |
+| design-taste-frontend | Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and … | `plugin/skills/design-taste-frontend/SKILL.md` |
+| design-taste-frontend-v1 | The original v1 taste-skill, preserved for projects depending on its exact behavior. The current default is `design-taste-frontend` (v2 e… | `plugin/skills/design-taste-frontend-v1/SKILL.md` |
 | detecting-container-escape-attempts | Container escape is a critical attack technique where an adversary breaks out of container isolation to access the host system or other c… | `plugin/skills/detecting-container-escape-attempts/SKILL.md` |
 | detecting-credential-dumping-techniques | Detect LSASS credential dumping, SAM database extraction, and NTDS.dit theft using Sysmon Event ID 10, Windows Security logs, and SIEM co… | `plugin/skills/detecting-credential-dumping-techniques/SKILL.md` |
 | detecting-misconfigured-azure-storage | 'Detecting misconfigured Azure Storage accounts including publicly accessible blob containers, missing encryption settings, overly permis… | `plugin/skills/detecting-misconfigured-azure-storage/SKILL.md` |
 | detecting-s3-data-exfiltration-attempts | 'Detecting data exfiltration attempts from AWS S3 buckets by analyzing CloudTrail S3 data events, VPC Flow Logs, GuardDuty findings, Amaz… | `plugin/skills/detecting-s3-data-exfiltration-attempts/SKILL.md` |
 | detecting-supply-chain-attacks-in-ci-cd | 'Scans GitHub Actions workflows and CI/CD pipeline configurations for supply chain attack vectors including unpinned actions, script inje… | `plugin/skills/detecting-supply-chain-attacks-in-ci-cd/SKILL.md` |
+| domain-driven-design | 'Model software around the business domain using bounded contexts, aggregates, and ubiquitous language. Use when the user mentions "domai… | `plugin/skills/domain-driven-design/SKILL.md` |
+| domain-driven-design-planner | "Decide whether full DDD is worth it, then plan and route Domain-Driven Design work from strategic modeling to tactical implementation an… | `plugin/skills/domain-driven-design-planner/SKILL.md` |
 | exploiting-broken-function-level-authorization | 'Tests APIs for Broken Function Level Authorization (BFLA) vulnerabilities where regular users can invoke administrative functions or acc… | `plugin/skills/exploiting-broken-function-level-authorization/SKILL.md` |
 | exploiting-deeplink-vulnerabilities | 'Tests and exploits deep link (URL scheme and App Link) vulnerabilities in Android and iOS mobile applications to identify unauthorized a… | `plugin/skills/exploiting-deeplink-vulnerabilities/SKILL.md` |
 | exploiting-excessive-data-exposure-in-api | 'Tests APIs for excessive data exposure where endpoints return more data than the client application needs, relying on the frontend to fi… | `plugin/skills/exploiting-excessive-data-exposure-in-api/SKILL.md` |
@@ -54,11 +61,17 @@ These are deep how-to playbooks. Do NOT load them all. When a task matches one, 
 | exploiting-sql-injection-vulnerabilities | 'Identifies and exploits SQL injection vulnerabilities in web applications during authorized penetration tests using manual techniques an… | `plugin/skills/exploiting-sql-injection-vulnerabilities/SKILL.md` |
 | exploiting-sql-injection-with-sqlmap | Detecting and exploiting SQL injection vulnerabilities using sqlmap to extract database contents during authorized penetration tests. | `plugin/skills/exploiting-sql-injection-with-sqlmap/SKILL.md` |
 | extracting-iocs-from-malware-samples | 'Extracts indicators of compromise (IOCs) from malware samples including file hashes, network indicators (IPs, domains, URLs), host artif… | `plugin/skills/extracting-iocs-from-malware-samples/SKILL.md` |
+| full-output-enforcement | Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits c… | `plugin/skills/full-output-enforcement/SKILL.md` |
+| gpt-taste | Elite UX/UI & Advanced GSAP Motion Engineer. Enforces Python-driven true randomization for layout variance, strict AIDA page structure, w… | `plugin/skills/gpt-taste/SKILL.md` |
 | hardening-docker-containers-for-production | Hardening Docker containers for production involves applying security best practices aligned with CIS Docker Benchmark v1.8.0 to minimize… | `plugin/skills/hardening-docker-containers-for-production/SKILL.md` |
 | hardening-docker-daemon-configuration | Harden the Docker daemon by configuring daemon.json with user namespace remapping, TLS authentication, rootless mode, and CIS benchmark c… | `plugin/skills/hardening-docker-daemon-configuration/SKILL.md` |
+| high-end-visual-design | Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that make a w… | `plugin/skills/high-end-visual-design/SKILL.md` |
 | hunting-for-persistence-mechanisms-in-windows | Systematically hunt for adversary persistence mechanisms across Windows endpoints including registry, services, startup folders, and WMI … | `plugin/skills/hunting-for-persistence-mechanisms-in-windows/SKILL.md` |
 | hunting-for-unusual-network-connections | Hunt for unusual network connections by analyzing outbound traffic patterns, rare destinations, non-standard ports, and anomalous connect… | `plugin/skills/hunting-for-unusual-network-connections/SKILL.md` |
 | hunting-for-webshell-activity | Hunt for web shell deployments on internet-facing servers by analyzing file creation in web directories, suspicious process spawning from… | `plugin/skills/hunting-for-webshell-activity/SKILL.md` |
+| image-to-code | Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s) itself, deeply … | `plugin/skills/image-to-code/SKILL.md` |
+| imagegen-frontend-mobile | Elite mobile app image-generation skill for creating premium, app-native screen concepts and flows. Designed for iOS, Android, and cross-… | `plugin/skills/imagegen-frontend-mobile/SKILL.md` |
+| imagegen-frontend-web | Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE — generate … | `plugin/skills/imagegen-frontend-web/SKILL.md` |
 | implementing-api-key-security-controls | 'Implements secure API key generation, storage, rotation, and revocation controls to protect API authentication credentials from leakage,… | `plugin/skills/implementing-api-key-security-controls/SKILL.md` |
 | implementing-api-rate-limiting-and-throttling | 'Implements API rate limiting and throttling controls using token bucket, sliding window, and fixed window algorithms to protect against … | `plugin/skills/implementing-api-rate-limiting-and-throttling/SKILL.md` |
 | implementing-aws-iam-permission-boundaries | Configure IAM permission boundaries in AWS to delegate role creation to developers while enforcing maximum privilege limits set by the se… | `plugin/skills/implementing-aws-iam-permission-boundaries/SKILL.md` |
@@ -66,8 +79,12 @@ These are deep how-to playbooks. Do NOT load them all. When a task matches one, 
 | implementing-hashicorp-vault-dynamic-secrets | 'Implements HashiCorp Vault dynamic secrets engines for database credentials, AWS IAM keys, and PKI certificates with automatic generatio… | `plugin/skills/implementing-hashicorp-vault-dynamic-secrets/SKILL.md` |
 | implementing-secrets-management-with-vault | 'This skill covers deploying HashiCorp Vault for centralized secrets management across cloud environments, including dynamic secret gener… | `plugin/skills/implementing-secrets-management-with-vault/SKILL.md` |
 | implementing-secrets-scanning-in-ci-cd | Integrate gitleaks and trufflehog into CI/CD pipelines to detect leaked secrets before deployment | `plugin/skills/implementing-secrets-scanning-in-ci-cd/SKILL.md` |
+| industrial-brutalist-ui | Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast, uti… | `plugin/skills/industrial-brutalist-ui/SKILL.md` |
+| minimalist-ui | Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy … | `plugin/skills/minimalist-ui/SKILL.md` |
 | performing-mobile-device-forensics-with-cellebrite | Acquire and analyze mobile device data using Cellebrite UFED and open-source tools to extract communications, location data, and applicat… | `plugin/skills/performing-mobile-device-forensics-with-cellebrite/SKILL.md` |
+| redesign-existing-projects | Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end desig… | `plugin/skills/redesign-existing-projects/SKILL.md` |
 | securing-aws-lambda-execution-roles | 'Securing AWS Lambda execution roles by implementing least-privilege IAM policies, applying permission boundaries, restricting resource-b… | `plugin/skills/securing-aws-lambda-execution-roles/SKILL.md` |
+| stitch-design-taste | Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-generic UI standards … | `plugin/skills/stitch-design-taste/SKILL.md` |
 | testing-api-for-mass-assignment-vulnerability | 'Tests APIs for mass assignment (auto-binding) vulnerabilities where clients can modify object properties they should not have access to … | `plugin/skills/testing-api-for-mass-assignment-vulnerability/SKILL.md` |
 | testing-for-sensitive-data-exposure | Identifying sensitive data exposure vulnerabilities including API key leakage, PII in responses, insecure storage, and unprotected data t… | `plugin/skills/testing-for-sensitive-data-exposure/SKILL.md` |
 | testing-for-xss-vulnerabilities | 'Tests web applications for Cross-Site Scripting (XSS) vulnerabilities by injecting JavaScript payloads into reflected, stored, and DOM-b… | `plugin/skills/testing-for-xss-vulnerabilities/SKILL.md` |
@@ -85,4 +102,4 @@ Reusable prompt workflows (native slash commands in Claude Code; reference the f
 - **balsm-context** — Summarize which Balsm repo you're in and its role in the wider workspace.
 
 ---
-<sub>Generated from 49 skills + 1 commands. Update: edit `Balsm-AI/canonical/` or `Balsm-AI/plugin/`, run `node Balsm-AI/sync.mjs --distribute`.</sub>
+<sub>Generated from 66 skills + 1 commands. Update: edit `Balsm-AI/canonical/` or `Balsm-AI/plugin/`, run `node Balsm-AI/sync.mjs --distribute`.</sub>

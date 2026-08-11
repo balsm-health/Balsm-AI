@@ -85,7 +85,7 @@ function render(pathPrefix) {
 
   lines.push(rules + "\n");
 
-  lines.push("## Security skills — on-demand index\n");
+  lines.push("## Skills — on-demand index\n");
   lines.push("These are deep how-to playbooks. Do NOT load them all. When a task matches one, open the file at its path and follow it. Paths assume the Balsm repos sit side by side under one workspace folder.\n");
   lines.push("| Skill | When to use | File |");
   lines.push("|---|---|---|");
