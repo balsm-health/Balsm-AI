@@ -1,3 +1,7 @@
+<p align="center">
+  <img src=".github/banner.png" alt="ذكاء بلسم · Balsm AI" width="880">
+</p>
+
 # Balsm-AI
 
 Shared AI toolkit for all Balsm repos — **skills**, **slash commands**, and **subagents** in one place, installed once and visible from every project.
